@@ -68,7 +68,10 @@ object FederatedLearningSearchOptimizer extends StreamingJobBase {
                (ping.payload.study_variation.startsWith("dogfooding")))
             && (ping.payload.bookmark_and_history_num_suggestions_displayed > -1)) {
 
-            val model_version  = if (ping.payload.model_version == -1) Int.MaxValue else ping.payload.model_version
+            // Clobber all training pings to be Int.MaxValue so that
+            // the reducing the aggregates by the minimum modelVersion
+            // does not lose any data.
+            val model_version  = Int.MaxValue
 
             Option(FrecencyUpdate(
               new Timestamp(clock.millis()),

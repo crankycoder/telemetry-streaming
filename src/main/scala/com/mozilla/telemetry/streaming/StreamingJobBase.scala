@@ -105,3 +105,7 @@ object StreamingJobBase {
 
   val TelemetryKafkaTopic = "telemetry"
 }
+
+object FederatedLearningStreamingJob extends StreamingJobBase  {
+  val TelemetryKafkaTopic = "frecency-update"
+}

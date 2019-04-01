@@ -8,7 +8,7 @@ import java.time.Clock
 
 import com.mozilla.telemetry.heka.Message
 import com.mozilla.telemetry.pings.FrecencyUpdatePing
-import com.mozilla.telemetry.streaming.StreamingJobBase.TelemetryKafkaTopic
+import com.mozilla.telemetry.streaming.FederatedLearningStreamingJob.TelemetryKafkaTopic
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.streaming.StreamingQuery
 import org.apache.spark.sql.{DataFrame, Dataset, Row, SparkSession}
@@ -17,7 +17,7 @@ import com.mozilla.telemetry.util.PrettyPrint
 
 import scala.collection.mutable
 
-object FederatedLearningSearchOptimizer extends StreamingJobBase {
+object FederatedLearningSearchOptimizer extends FederatedLearningStreamingJob {
   override val JobName: String = "federated_learning_search_optimizer"
 
   def main(args: Array[String]): Unit = {
